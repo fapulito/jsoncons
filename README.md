@@ -11,7 +11,7 @@
 
 The `jsoncons` package is designed to provide a basic command-line interface for handling JSON data. This can be useful for simple scripting or interoperability tasks (e.g., having a COBOL program generate a text file that this tool converts to JSON, or vice versa).
 
-### **Installation (if included):**
+### **Installation:**
 
 ```bash
 pip install jsoncons
@@ -56,8 +56,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Happy Serializing! 🎉
-
 ## 🧪 Unit Test Explanation For `jsoncons` Package ✅
 
 1.  **Imports:** Imports necessary modules like `unittest`, `sys` (for patching argv/streams), `io` (for capturing streams), `os`, `json`, `tempfile`, `shutil`, and `unittest.mock.patch`. It also imports the `cli` module from the package.
@@ -85,9 +83,6 @@ Happy Serializing! 🎉
         *   The content of captured `stdout` (when output is expected there).
         *   The existence and content of output files (when file output is expected).
 7.  **`if __name__ == '__main__':`**: Allows running the tests directly using `python -m unittest tests.test_cli` or `python tests/test_cli.py`.
-
-
-
 
 
 ## ⛰️ Extending ``jsoncons`` to COBOL 👀
