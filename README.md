@@ -5,6 +5,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Version](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://www.python.org/)
+[![PyPI version](https://badge.fury.io/py/jsoncons.svg)](https://badge.fury.io/py/jsoncons)
 
 
 
@@ -13,19 +14,17 @@ The `jsoncons` package is designed to provide a basic command-line interface for
 ### **Installation (if included):**
 
 ```bash
-pip install .
-# Or, if published to PyPI:
-# pip install jsoncons
+pip install jsoncons
 ```
 
-### **Basic Usage:**
+### **Basic Usage for Pretty-Print JSON:**
 *   **Create Input File If Necessary:** In your project directory, verify there is a file named 
     input.json with the following content:
     ```bash
     {"key":"value", "items":[1,2]}
     ```
 
-*   **Validate & Pretty-print JSON:** Read from stdin, write to stdout.
+*   **Validate & Pretty-print JSON:** Read from stdin, write to stdout. (Linux Command)
     ```bash
     echo '{"key":"value", "items":[1,2]}' | jsoncons encode
     ```

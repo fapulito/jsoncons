@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "jsoncons"
-version = "0.4.0"
+version = "0.6.0"
 authors = [
   { name="David Anderson", email="david@california.vision" },
 ]
@@ -29,5 +29,5 @@ dependencies = [
 jsoncons = "jsoncons.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/fapulito/jsoncons-repo" # Update URL
+Homepage = "https://github.com/fapulito/jsoncons" # Update URL
 Issues = "https://github.com/fapulito/jsoncons/issues" # Update URL
