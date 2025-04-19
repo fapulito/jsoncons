@@ -19,12 +19,22 @@ pip install .
 ```
 
 ### **Basic Usage:**
+*   **Create Input File If Necessary:** In your project directory, verify there is a file named 
+    input.json with the following content:
+    ```bash
+    {"key":"value", "items":[1,2]}
+    ```
 
 *   **Validate & Pretty-print JSON:** Read from stdin, write to stdout.
     ```bash
     echo '{"key":"value", "items":[1,2]}' | jsoncons encode
     ```
-*   **Validate & Pretty-print JSON from file to file:**
+    **Windows Powershell Command:** Read from stdin, write to stdout.
+    ```bash
+    echo {"\"key\"":"\"value\"", "\"items\"":[1,2]} | jsoncons encode
+    ```
+
+*   **Validate & Pretty-print JSON from file to file:** (Tested on Windows 10)
     ```bash
     jsoncons encode input.json output_pretty.json
     ```
