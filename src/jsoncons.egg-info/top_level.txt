@@ -1,2 +1,0 @@
-jsoncons
-tests
