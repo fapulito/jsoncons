@@ -1,7 +1,7 @@
 
 
 ## 🐍 The `jsoncons` Package 🐛❇️🐉 
-## 🚙 JSON CLI Utility in Python 🐍
+## 🚙🦖 JSON-to-COBOL CLI Utility in Python 🦕🐍
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Version](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://www.python.org/)
@@ -9,7 +9,8 @@
 
 
 
-The `jsoncons` package is designed to provide a basic command-line interface for handling JSON data. This can be useful for simple scripting or interoperability tasks (e.g., having a COBOL program generate a text file that this tool converts to JSON, or vice versa).
+The `jsoncons` package is designed to provide a basic command-line interface for handling JSON data. This can be useful for simple scripting or interoperability tasks (e.g., having a COBOL program generate a text file that this tool converts to JSON, or vice versa). 
+COBOL-to-JSON parsing features were added in v1.0.0 and will be extended in future versions of ``jsoncons``.
 
 ### **Installation:**
 
@@ -38,6 +39,12 @@ pip install jsoncons
     jsoncons encode input.json output_pretty.json
     ```
 *   *(The `decode` command might be an alias or offer slightly different formatting if needed)*
+
+## **Preview Branch v1.0.1** 
+### **Features In Development for v1.1.0**
+- Improved FP COBOL-to-JSON functionality
+- Jupyter Notebook Tutorial
+- Template Python Function using ``jsoncons``
 
 ## 🤝 Contributing 🖥️
 

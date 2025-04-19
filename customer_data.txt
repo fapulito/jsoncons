@@ -1,0 +1,4 @@
+00101Alice Smith              000015075+A1
+00102Bob Johnson              000000000{N2
+00103Charlie Brown            000123450-R1
+00104Diana Davis              000009900+A1
