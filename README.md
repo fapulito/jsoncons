@@ -1,7 +1,7 @@
 
 
 ## 🐍 The `jsoncons` Package 🐛❇️🐉 
-## 🚙🦖 JSON-to-COBOL CLI Utility in Python 🦕🐍
+## 🚙🦖 COBOL-to-JSON CLI Utility in Python 🦕🐍
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Version](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://www.python.org/)
@@ -40,11 +40,16 @@ pip install jsoncons
     ```
 *   *(The `decode` command might be an alias or offer slightly different formatting if needed)*
 
-## **Preview Branch v1.0.1** 
+## **Tested Release ``jsoncons``v1.0.4**
+### Bug Fixed: f-string Issue in ``COBOL-to-JSON`` function
+-  Jupyter Notebook Tutorial
+-  COBOL-to-JSON function tested in 3.11.1,3.11.2, 3.12.1
+-  Compatibility expected with Python v3.8>=
 ### **Features In Development for v1.1.0**
-- Improved FP COBOL-to-JSON functionality
-- Jupyter Notebook Tutorial
-- Template Python Function using ``jsoncons``
+-  Improved FP COBOL-to-JSON functionality
+-  Template Python Function using ``jsoncons``
+### **Roadmap to v2.0.0
+-  Integration with IBM zOS 
 
 ## 🤝 Contributing 🖥️
 

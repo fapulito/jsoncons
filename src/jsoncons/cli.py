@@ -13,17 +13,27 @@ class CobolParsingError(ValueError):
     """Custom error for COBOL parsing issues."""
     pass
 
+# Inside parse_cobol_line function in cli.py
+
 def parse_cobol_line(line, layout_config, line_num):
     """Parses a single line of fixed-width data based on the layout."""
     record = {}
     expected_len = layout_config.get("record_length")
-    if expected_len and len(line.rstrip('\n\r')) != expected_len:
-        logging.warning(f"Line {line_num}: Expected length {expected_len}, got {len(line.rstrip('\n\r'))}. Processing anyway.")
-        # Decide if you want to raise an error here instead:
-        # raise CobolParsingError(f"Line {line_num}: Expected length {expected_len}, got {len(line.rstrip('\n\r'))}")
 
+    # Calculate the length *after* stripping newlines/carriage returns
+    actual_stripped_length = len(line.rstrip('\n\r')) # <<< Calculate length here
+
+    # Now check against expected length
+    if expected_len and actual_stripped_length != expected_len:
+        # Use the calculated variable inside the f-string
+        logging.warning(f"Line {line_num}: Expected length {expected_len}, got {actual_stripped_length}. Processing anyway.") # <<< Fixed f-string
+        # Decide if you want to raise an error here instead:
+        # raise CobolParsingError(f"Line {line_num}: Expected length {expected_len}, got {actual_stripped_length}")
+
+    # ... rest of the function remains the same ...
 
     for field in layout_config.get("fields", []):
+        # ... field processing logic ...
         name = field["name"]
         # Adjust start_pos to be 0-based index for Python slicing
         start_index = field["start_pos"] - 1
