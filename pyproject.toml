@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "jsoncons"
-version = "1.0.2" # <-- Tested version in Jupyter and console with COBOL-to-JSON features
+version = "1.0.3" # <-- bugfix for f-string issue 
 authors = [
   { name="David Anderson", email="david@california.vision" },
 ]
