@@ -97,13 +97,21 @@
     - Test invalid JSON raises JSONDecodeError
     - _Requirements: 4.2, 4.3, 4.4_
 
-- [ ] 5. Add CLI Commands for Fibonacci Variants
-  - [ ] 5.1 Add `process_json_fib` subcommand to argparse
+- [x] 5. Add CLI Commands for Fibonacci Variants
+
+
+
+
+  - [x] 5.1 Add `process_json_fib` subcommand to argparse
+
+
     - Define arguments: infile, outfile, --indent, --sort-keys
     - Wire to `process_json_fib()` function
     - _Requirements: 4.1_
   
-  - [ ] 5.2 Add `cobol_to_json_fib` subcommand to argparse
+  - [x] 5.2 Add `cobol_to_json_fib` subcommand to argparse
+
+
     - Define arguments: --layout-file, infile, outfile
     - Wire to `process_cobol_to_json_fib()` function
     - _Requirements: 3.1_

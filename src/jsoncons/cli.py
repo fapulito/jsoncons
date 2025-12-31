@@ -317,7 +317,9 @@ def process_json(infile, outfile, indent=2, sort_keys=False):
     """Reads JSON from infile, validates, and writes formatted JSON to outfile."""
     try:
         data = json.load(infile)
-        json.dump(data, outfile, indent=indent, sort_keys=sort_keys)
+        # Use compact separators when indent is None or 0
+        separators = (',', ':') if indent is None or indent == 0 else (',', ': ')
+        json.dump(data, outfile, indent=indent, sort_keys=sort_keys, separators=separators)
         outfile.write('\n') # Ensure newline at the end
     except json.JSONDecodeError as e:
         # Make error message more specific to the input source
@@ -405,6 +407,13 @@ def main():
         parents=[common_parser_json]
     )
 
+    # --- 'process_json_fib' Subcommand ---
+    parser_process_json_fib = subparsers.add_parser(
+        'process_json_fib',
+        help='Fibonacci variant: Validate and pretty-print JSON data.',
+        parents=[common_parser_json]
+    )
+
     # --- 'cobol_to_json' Subcommand ---
     parser_c2j = subparsers.add_parser(
         'cobol_to_json',
@@ -425,6 +434,30 @@ def main():
     parser_c2j.add_argument(
         "outfile",
         nargs='?', # Make output file optional, defaulting to stdout
+        type=argparse.FileType('w', encoding='utf-8'),
+        default=sys.stdout,
+        help="Output JSON file (writes to stdout if omitted)."
+    )
+
+    # --- 'cobol_to_json_fib' Subcommand ---
+    parser_c2j_fib = subparsers.add_parser(
+        'cobol_to_json_fib',
+        help='Fibonacci variant: Convert fixed-width COBOL data file to JSON using a layout file.'
+    )
+    parser_c2j_fib.add_argument(
+        "--layout-file",
+        metavar='LAYOUT_JSON',
+        required=True,
+        help="Path to the JSON file describing the COBOL record layout."
+    )
+    parser_c2j_fib.add_argument(
+        "infile",
+        type=argparse.FileType('r', encoding='utf-8'),
+        help="Input fixed-width COBOL data file."
+    )
+    parser_c2j_fib.add_argument(
+        "outfile",
+        nargs='?',
         type=argparse.FileType('w', encoding='utf-8'),
         default=sys.stdout,
         help="Output JSON file (writes to stdout if omitted)."
@@ -453,8 +486,13 @@ def main():
     if args.command in ["encode", "decode"]:
         output_indent = args.indent if args.indent > 0 else None
         process_json(args.infile, args.outfile, indent=output_indent, sort_keys=args.sort_keys)
+    elif args.command == "process_json_fib":
+        output_indent = args.indent if args.indent > 0 else None
+        process_json_fib(args.infile, args.outfile, indent=output_indent, sort_keys=args.sort_keys)
     elif args.command == "cobol_to_json":
         process_cobol_to_json(args.layout_file, args.infile, args.outfile)
+    elif args.command == "cobol_to_json_fib":
+        process_cobol_to_json_fib(args.layout_file, args.infile, args.outfile)
     else:
         # Should not happen if subparsers are required=True
         logging.error(f"Error: Unknown command '{args.command}' encountered.")
