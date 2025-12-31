@@ -76,8 +76,12 @@
     - Test parsing errors are logged and processing continues
     - _Requirements: 3.3_
 
-- [ ] 4. Implement JSON Processing Variant Function
-  - [ ] 4.1 Add `process_json_fib()` function to `jsoncons/cli.py`
+- [-] 4. Implement JSON Processing Variant Function
+
+
+  - [x] 4.1 Add `process_json_fib()` function to `jsoncons/cli.py`
+
+
     - Implement as delegation to `process_json()`
     - Support indent and sort_keys options
     - Maintain identical behavior to original

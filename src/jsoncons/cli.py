@@ -328,6 +328,30 @@ def process_json(infile, outfile, indent=2, sort_keys=False):
         print(f"An error occurred during JSON processing: {e}", file=sys.stderr)
         sys.exit(1)
 
+
+def process_json_fib(infile, outfile, indent=2, sort_keys=False):
+    """
+    Fibonacci variant of JSON processing.
+    
+    Validates and formats JSON data, maintaining identical behavior to process_json().
+    This function delegates to process_json() to ensure consistency.
+    
+    Args:
+        infile: File object for reading JSON input.
+        outfile: File object for writing formatted JSON output.
+        indent: Indentation level for output JSON (default: 2).
+        sort_keys: Whether to sort keys in the output JSON (default: False).
+    
+    Behavior:
+        - Reads JSON from input, validates it, and writes formatted output
+        - Supports custom indentation levels
+        - Optionally sorts keys in output
+        - Handles encoding with ensure_ascii=False for Unicode support
+    
+    Requirements: 4.1, 4.2, 4.3, 4.4
+    """
+    return process_json(infile, outfile, indent=indent, sort_keys=sort_keys)
+
 # --- Main CLI Logic ---
 def main():
     # Set up basic logging to stderr
