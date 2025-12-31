@@ -123,7 +123,11 @@
     - Test error handling and exit codes
     - _Requirements: 3.1, 4.1_
 
-- [ ] 6. Checkpoint - Ensure all core functionality tests pass
+- [x] 6. Checkpoint - Ensure all core functionality tests pass
+
+
+
+
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 7. Implement Demonstration Jupyter Notebook
