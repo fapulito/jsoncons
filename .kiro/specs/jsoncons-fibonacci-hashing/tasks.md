@@ -34,7 +34,11 @@
     - _Requirements: 1.2, 1.3_
 
 - [ ] 2. Implement COBOL Parsing Variant Function
-  - [ ] 2.1 Add `parse_cobol_line_fib()` function to `jsoncons/cli.py`
+
+
+  - [x] 2.1 Add `parse_cobol_line_fib()` function to `jsoncons/cli.py`
+
+
     - Implement as delegation to `parse_cobol_line()`
     - Maintain identical behavior and error handling
     - _Requirements: 2.1, 2.2, 2.3, 2.4_
@@ -49,7 +53,9 @@
     - Test short records are padded with warning logged
     - _Requirements: 2.2, 2.3_
 
+
 - [ ] 3. Implement COBOL-to-JSON Processing Variant
+
   - [ ] 3.1 Add `process_cobol_to_json_fib()` function to `jsoncons/cli.py`
     - Load layout configuration from JSON file
     - Iterate through input lines using `parse_cobol_line_fib()`

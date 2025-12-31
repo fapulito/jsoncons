@@ -156,6 +156,30 @@ def parse_cobol_line(line, layout_config, line_num):
 
     return record
 
+
+def parse_cobol_line_fib(line, layout_config, line_num):
+    """
+    Fibonacci variant of COBOL line parsing.
+    
+    Parses a single line of fixed-width COBOL data according to a layout specification.
+    This function delegates to parse_cobol_line() to maintain identical behavior and
+    error handling.
+    
+    Args:
+        line: A single line of fixed-width COBOL data (string).
+        layout_config: Dictionary containing the record layout specification.
+        line_num: The line number (for error reporting).
+    
+    Returns:
+        A dictionary with parsed field values.
+    
+    Raises:
+        CobolParsingError: If parsing fails for any field.
+    
+    Requirements: 2.1, 2.2, 2.3, 2.4
+    """
+    return parse_cobol_line(line, layout_config, line_num)
+
 def process_cobol_to_json(layout_file, infile, outfile):
     """Loads layout, reads COBOL data, parses lines, and writes JSON."""
     try:
@@ -181,6 +205,82 @@ def process_cobol_to_json(layout_file, infile, outfile):
                 continue
             try:
                 record = parse_cobol_line(line, layout_config, line_num)
+                records.append(record)
+            except CobolParsingError as e:
+                logging.error(str(e)) # Log parsing error for the specific line
+                # Optionally decide whether to skip the line or exit entirely
+                # sys.exit(1) # Uncomment to make it fatal
+                logging.warning(f"Skipping line {line_num} due to parsing error.")
+
+        # Use Decimal encoder for output
+        class DecimalEncoder(json.JSONEncoder):
+            def default(self, obj):
+                if isinstance(obj, decimal.Decimal):
+                    # Convert Decimal to string to preserve precision
+                    # Or convert to float: float(obj), but risk precision loss
+                    return str(obj)
+                # Let the base class default method raise the TypeError
+                return super(DecimalEncoder, self).default(obj)
+
+        json.dump(records, outfile, indent=2, cls=DecimalEncoder) # Use indent=2 for pretty print
+        outfile.write('\n')
+        if outfile is not sys.stdout:
+            logging.info(f"Successfully converted COBOL data to JSON in {outfile.name}")
+
+    except FileNotFoundError:
+        # This is already handled by argparse FileType, but as fallback
+        logging.error(f"Input data file not found: {infile.name}")
+        sys.exit(1)
+    except Exception as e:
+        logging.error(f"An error occurred during COBOL data processing: {e}", exc_info=True)
+        sys.exit(1)
+
+
+def process_cobol_to_json_fib(layout_file, infile, outfile):
+    """
+    Fibonacci variant of COBOL-to-JSON processing.
+    
+    Converts fixed-width COBOL data to JSON format using a layout specification.
+    This function delegates to process_cobol_to_json() to maintain identical behavior
+    and error handling.
+    
+    Args:
+        layout_file: Path to the JSON file describing the COBOL record layout.
+        infile: File object for reading fixed-width COBOL data.
+        outfile: File object for writing JSON output.
+    
+    Behavior:
+        - Loads layout configuration from JSON file
+        - Iterates through input lines using parse_cobol_line_fib()
+        - Skips empty lines and handles parsing errors gracefully
+        - Outputs valid JSON with DecimalEncoder for precision
+        - Logs informational and error messages to stderr
+    
+    Requirements: 3.1, 3.2, 3.3, 3.4
+    """
+    try:
+        with open(layout_file, 'r', encoding='utf-8') as f_layout:
+            layout_config = json.load(f_layout)
+    except FileNotFoundError:
+        logging.error(f"Layout file not found: {layout_file}")
+        sys.exit(1)
+    except json.JSONDecodeError as e:
+        logging.error(f"Error decoding JSON layout file '{layout_file}': {e}")
+        sys.exit(1)
+    except Exception as e:
+        logging.error(f"Error reading layout file '{layout_file}': {e}", exc_info=True)
+        sys.exit(1)
+
+    records = []
+    line_num = 0
+    try:
+        for line in infile:
+            line_num += 1
+            # Skip empty lines
+            if not line.strip():
+                continue
+            try:
+                record = parse_cobol_line_fib(line, layout_config, line_num)
                 records.append(record)
             except CobolParsingError as e:
                 logging.error(str(e)) # Log parsing error for the specific line
