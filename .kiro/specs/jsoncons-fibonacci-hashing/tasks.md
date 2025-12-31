@@ -56,7 +56,9 @@
 
 - [ ] 3. Implement COBOL-to-JSON Processing Variant
 
-  - [ ] 3.1 Add `process_cobol_to_json_fib()` function to `jsoncons/cli.py`
+  - [x] 3.1 Add `process_cobol_to_json_fib()` function to `jsoncons/cli.py`
+
+
     - Load layout configuration from JSON file
     - Iterate through input lines using `parse_cobol_line_fib()`
     - Skip empty lines and handle parsing errors gracefully
