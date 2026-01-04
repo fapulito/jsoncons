@@ -1,4 +1,4 @@
-# jsoncons/cli.py - v0.3.0 includes encode/decode functionality
+# jsoncons/cli.py - v1.1.0 includes Fibonacci hashing function
 import json
 import sys
 import argparse

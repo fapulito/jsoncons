@@ -1,4 +1,4 @@
-# tests/test_cli.py
+# tests/test_cli.py v1.1.0 includes Fibonacci hashing function
 
 import unittest
 import sys

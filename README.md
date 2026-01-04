@@ -4,6 +4,7 @@
 ## 🚙🦖 COBOL-to-JSON CLI Utility in Python 🦕🐍
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/jsoncons?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/jsoncons)
 [![Python Version](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://www.python.org/)
 [![PyPI version](https://badge.fury.io/py/jsoncons.svg)](https://badge.fury.io/py/jsoncons)
 
@@ -40,16 +41,60 @@ pip install jsoncons
     ```
 *   *(The `decode` command might be an alias or offer slightly different formatting if needed)*
 
-## **Tested Release ``jsoncons``v1.0.4**
+## **Latest Release: `jsoncons` v1.1.0** ✨
+### New Features: Fibonacci Hashing Integration
+- **Fibonacci Hashing Function**: `fibonacci_hash_to_index()` for efficient hash table indexing
+- **New CLI Commands**: 
+  - `process_json_fib` - Fibonacci variant of JSON processing
+  - `cobol_to_json_fib` - Fibonacci variant of COBOL-to-JSON conversion
+- **Comprehensive Jupyter Notebook**: `Fibonacci_Hashing_Demo.ipynb` demonstrating:
+  - Performance benchmarks (Fibonacci vs. Modulo vs. Bitwise AND hashing)
+  - Distribution analysis with visualizations
+  - Step-by-step algorithm visualization
+  - Educational content on hashing techniques
+- **Full Backward Compatibility**: All existing commands work unchanged
+- **Tested on Python**: 3.8+, 3.11.1, 3.11.2, 3.12.1
+
+### What is Fibonacci Hashing?
+Fibonacci hashing is a multiplicative hashing technique that uses the golden ratio to distribute hash values uniformly across power-of-2 sized hash tables. It's faster than modulo hashing and provides better distribution than simple bitwise AND operations.
+
+**Key Benefits:**
+- ⚡ **Performance**: Uses only multiplication and bit shift operations
+- 📊 **Distribution**: Uniform distribution across hash table indices
+- 🎓 **Educational**: Learn about advanced hashing techniques
+- 🔧 **Extensible**: Foundation for future performance optimizations
+
+### Using Fibonacci Hashing
+```bash
+# Process JSON with Fibonacci variant
+jsoncons process_json_fib input.json output.json
+
+# Convert COBOL to JSON with Fibonacci variant
+jsoncons cobol_to_json_fib --layout-file layout.json input.cobol output.json
+
+# Use the Fibonacci hashing function in Python
+from jsoncons.cli import fibonacci_hash_to_index
+
+index = fibonacci_hash_to_index(hash_value=12345, table_size_power_of_2=1024)
+print(f"Hash index: {index}")  # Output: 0-1023
+```
+
+### Jupyter Notebook Demo
+Run the included `Fibonacci_Hashing_Demo.ipynb` to see:
+- Performance comparisons with 100,000 hash operations
+- Distribution analysis with histograms
+- Visual step-by-step demonstration of the algorithm
+- Practical applications and conclusions
+
+## **Previous Release: `jsoncons` v1.0.4**
 ### Bug Fixed: f-string Issue in ``COBOL-to-JSON`` function
--  Jupyter Notebook Tutorial
--  COBOL-to-JSON function tested in 3.11.1,3.11.2, 3.12.1
--  Compatibility expected with Python v3.8>=
-### **Features In Development for v1.1.0**
--  Improved FP COBOL-to-JSON functionality
--  Template Python Function using ``jsoncons``
-### **Roadmap to v2.0.0
--  Integration with IBM zOS 
+-  COBOL-to-JSON function tested in 3.11.1, 3.11.2, 3.12.1
+-  Compatibility with Python v3.8+
+
+### **Roadmap to v2.0.0**
+- Integration with IBM zOS
+- Performance optimizations using Fibonacci hashing in internal data structures
+- Enhanced COBOL field lookup with hash table acceleration 
 
 ## 🤝 Contributing 🖥️
 

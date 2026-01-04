@@ -1,0 +1,11 @@
+dist/
+build/
+
+.venv
+
+src/jsoncons.egg-info/
+output_pretty.json
+
+input.json
+
+.pytest_cache
