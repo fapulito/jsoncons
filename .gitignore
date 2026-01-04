@@ -9,3 +9,5 @@ output_pretty.json
 input.json
 
 .pytest_cache
+
+.kiro
