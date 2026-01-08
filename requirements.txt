@@ -5,6 +5,8 @@ json5>=0.9.0
 jupyter>=1.0.0
 notebook>=6.4.0
 ipython>=7.0.0
+urllib3>=2.6.3
+
 
 # Data analysis and visualization
 numpy>=1.19.0
@@ -18,3 +20,5 @@ hypothesis>=6.0.0
 # Code quality tools
 pylint>=2.7.0
 flake8>=3.9.0
+
+
